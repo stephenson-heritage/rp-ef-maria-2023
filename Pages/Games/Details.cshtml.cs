@@ -18,7 +18,10 @@ namespace rp_ef_maria.Pages.Games
             _context = context;
         }
 
-      public Game Game { get; set; } = default!; 
+        public Game Game { get; set; } = default!;
+
+        [BindProperty(SupportsGet = true, Name = "msg")]
+        public string Message { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(uint? id)
         {
@@ -27,12 +30,13 @@ namespace rp_ef_maria.Pages.Games
                 return NotFound();
             }
 
+
             var game = await _context.Game.FirstOrDefaultAsync(m => m.GameId == id);
             if (game == null)
             {
                 return NotFound();
             }
-            else 
+            else
             {
                 Game = game;
             }

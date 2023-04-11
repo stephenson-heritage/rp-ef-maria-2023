@@ -1,8 +1,13 @@
 @page
 @model rp_ef_maria.Pages.Games.IndexModel
+@inject StoreContext _context
 
 @{
     ViewData["Title"] = "Index";
+
+    var games = _context.Game.Where(g => g.Title.Contains("cat")).ToList();
+
+    Model.Game = games;
 }
 
 <h1>Index</h1>
@@ -10,6 +15,8 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+
+
 <table class="table">
     <thead>
         <tr>
