@@ -20,9 +20,12 @@ public class Game
 
 	[DataType(DataType.Currency)]
 	[Column(TypeName = "decimal(10,2)")]
+	[Range(0, 99999999.99, ErrorMessage = "Price must be between 0 and 9999999999.99")]
 	public decimal Price { get; set; }
 
-	public virtual List<Rating> Ratings { get; set; } = default!;
+
+	public virtual List<Rating>? Ratings { get; set; }
+
 }
 
 
