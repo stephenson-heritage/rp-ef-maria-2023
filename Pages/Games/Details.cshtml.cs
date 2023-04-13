@@ -20,7 +20,8 @@ namespace rp_ef_maria.Pages.Games
 
         public Game Game { get; set; } = default!;
 
-        [BindProperty(SupportsGet = true, Name = "msg")]
+
+        [FromQuery(Name ="msg")]
         public string Message { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(uint? id)
